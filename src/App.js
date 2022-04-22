@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Buttons from "./Button";
+import Board from "./component/Board";
 
 function App() {
   const [data, setData] = useState([]);
@@ -8,6 +10,7 @@ function App() {
     indexMatch: 0,
     valueMatch: 0,
   });
+  const [history, setHistory] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,7 +58,16 @@ function App() {
     }
   };
 
-  return <div className="App">{data}</div>;
+  return (
+    <div className="App">
+      <Board
+        data={data}
+        playerInput={guessInput.playerInput}
+        history={history}
+        handleColorClick={handleColorClick}
+      />
+    </div>
+  );
 }
 
 export default App;
