@@ -24,6 +24,37 @@ function App() {
     fetchData();
   }, []);
 
+  const handleColorClick = (num) => {
+    let newGuessInputs = Object.assign({}, guessInput);
+    let newuserInputs = newGuessInputs.playerInput;
+    let copyData = [...data];
+
+    if (guessInput.playerInput.length < 4) {
+      newuserInputs.push(num);
+      setGuessInput(newGuessInputs);
+    } else {
+      return;
+    }
+
+    if (newuserInputs.length === 4) {
+      newuserInputs.forEach((num, i) => {
+        if (copyData.includes(num)) {
+          newGuessInputs.valueMatch++;
+
+          copyData[copyData.indexOf(num)] = null; //set the element
+        }
+      });
+      setGuessInput({ guessInputs: newGuessInputs });
+
+      for (let i = 0; i < newuserInputs.length; i++) {
+        if (newuserInputs[i] === data[i]) {
+          newGuessInputs.indexMatch++;
+        }
+        setGuessInput(newGuessInputs);
+      }
+    }
+  };
+
   return <div className="App">{data}</div>;
 }
 
