@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Board from "./component/Board";
-import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import Sidebar from "./component/Sidebar";
 // import Play from "./component/Play";
@@ -141,6 +140,8 @@ function App() {
             playerInput={guessInput.playerInput}
             history={history}
             handleColorClick={handleColorClick}
+            attempt={attempt}
+            MAX_ALLOWED_GUESSES={MAX_ALLOWED_GUESSES}
           />
         </BoardContainer>
       </Container>
@@ -152,12 +153,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 200vh;
   background: linear-gradient(to right, #00bfff, #b2ffff);
 `;
 
 const BoardContainer = styled.div`
-  height: 110vh;
+  height: 150vh;
   width: 80vw;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);

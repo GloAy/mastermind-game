@@ -8,7 +8,7 @@ import SideButtons from "./SideButtons";
 
 const SidebarContainer = styled.div`
   width: 30%;
-  height: 100%;
+  height: 120%;
   background: linear-gradient(255, 255, 255, 0.1);
   backdrop-filter: blur(14px);
   border-top-left-radius: 10px;

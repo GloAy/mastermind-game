@@ -6,7 +6,13 @@ import styled from "styled-components";
 //you have the color picker
 //different components
 
-const Board = ({ handleColorClick, playerInput, history }) => {
+const Board = ({
+  handleColorClick,
+  playerInput,
+  history,
+  MAX_ALLOWED_GUESSES,
+  attempt,
+}) => {
   const BoardContainer = styled.div``;
 
   const Title = styled.h1`
@@ -36,9 +42,19 @@ const Board = ({ handleColorClick, playerInput, history }) => {
       border: none;
     }
   `;
+
+  console.log("bu", MAX_ALLOWED_GUESSES);
+
   return (
     <BoardContainer>
       <Title>Spaceship</Title>
+      <div className="attempt-text">
+        <p>
+          {" "}
+          You have {MAX_ALLOWED_GUESSES - attempt} attempts left. Choose
+          Carefully!
+        </p>
+      </div>
       <GamePlayContainer>
         <div className="guessed-stars">
           {/*  */}
