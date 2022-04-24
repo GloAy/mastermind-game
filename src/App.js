@@ -3,6 +3,7 @@ import axios from "axios";
 import Board from "./component/Board";
 import styled from "styled-components";
 import Sidebar from "./component/Sidebar";
+import Rules from "./component/Rules";
 // import Play from "./component/Play";
 
 export const MAX_ALLOWED_GUESSES = 10;
@@ -17,26 +18,23 @@ function App() {
   });
   const [history, setHistory] = useState([]);
   const [attempt, setAttempt] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
         "https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new"
       );
-      //console.log("this is the result variable", res);
-      //the data we get is ['1', '\n', '2', '\n', '5', '\n', '7', '\n']
       const result = res.data.split("").filter((input) => input !== "\n");
-      //console.log(result);
-      //set data holds the secret code
       setData(result);
     };
     fetchData();
   }, []);
 
   const handleColorClick = (num) => {
-    let newGuessInputs = Object.assign({}, guessInput);
-    let newuserInputs = newGuessInputs.playerInput;
-    let copyData = [...data];
+    let newGuessInputs = Object.assign({}, guessInput); //{}
+    let newuserInputs = newGuessInputs.playerInput; //[]
+    let copyData = [...data]; //[copy the secret code]
 
     if (guessInput.playerInput.length < 4) {
       newuserInputs.push(num);
@@ -144,6 +142,7 @@ function App() {
             MAX_ALLOWED_GUESSES={MAX_ALLOWED_GUESSES}
           />
         </BoardContainer>
+        <Rules openModal={openModal} setOpenModal={setOpenModal} />
       </Container>
     </div>
   );

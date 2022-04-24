@@ -28,6 +28,8 @@ const SideButtons = ({
   handleStartNewGame,
   handleSubmitClick,
   handleClearClick,
+  openModal,
+  setOpenModal,
   Rules,
 }) => {
   return (
@@ -75,22 +77,17 @@ const SideButtons = ({
           Submit
         </button>{" "}
       </Submit>
-      <Submit>
+      <div>
         <button
-          variant="submit"
-          Rules={Rules}
-          style={{
-            background: "#fff",
-            opacity: "0.4",
-            borderRadius: "0.9rem",
-            fontSize: "1rem",
-          }}
+          className="openModalBtn"
+          variant="rules"
+          onClick={() => setOpenModal(true)}
+          style={{ background: "#DD3545" }}
         >
-          {" "}
           Rules
         </button>{" "}
-      </Submit>
-      {Rules}
+        {openModal && <Rules closeModal={setOpenModal} />}
+      </div>
     </LinkContainer>
   );
 };
