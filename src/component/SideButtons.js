@@ -20,10 +20,15 @@ const Submit = styled.div`
   padding: 1rem 0 1rem 0;
 `;
 
+// const Rules = styled.div`
+//   padding: 1rem 0 1rem 0;
+// `;
+
 const SideButtons = ({
   handleStartNewGame,
   handleSubmitClick,
   handleClearClick,
+  Rules,
 }) => {
   return (
     <LinkContainer>
@@ -70,6 +75,22 @@ const SideButtons = ({
           Submit
         </button>{" "}
       </Submit>
+      <Submit>
+        <button
+          variant="submit"
+          Rules={Rules}
+          style={{
+            background: "#fff",
+            opacity: "0.4",
+            borderRadius: "0.9rem",
+            fontSize: "1rem",
+          }}
+        >
+          {" "}
+          Rules
+        </button>{" "}
+      </Submit>
+      {Rules}
     </LinkContainer>
   );
 };

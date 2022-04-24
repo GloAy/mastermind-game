@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-//import { Button } from "react-bootstrap";
 import spaceship from "../assets/spaceship.png";
 import SideButtons from "./SideButtons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar } from "@fortawesome/fontawesome-free-regular";
+import Rules from "./Rules";
 
 const SidebarContainer = styled.div`
   width: 30%;
@@ -39,11 +37,14 @@ const Sidebar = ({
   return (
     <SidebarContainer>
       <NavContainer>
-        <RocketIcon src={spaceship}></RocketIcon>
+        <RocketIcon
+          src={"https://media.giphy.com/media/J1WyRIJrTeKs6R6VHL/giphy.gif"}
+        ></RocketIcon>
         <SideButtons
           handleSubmitClick={handleSubmitClick}
           handleClearClick={handleClearClick}
           handleStartNewGame={handleStartNewGame}
+          rules={Rules}
         />
       </NavContainer>{" "}
     </SidebarContainer>

@@ -69,22 +69,22 @@ function App() {
     numberOfAttempts++;
 
     //if the player attemps 10 times and the value is not equal to 4
-    console.log("this is number of attempts", numberOfAttempts);
-    console.log(
-      "this is in the click function - begin ",
-      guessInput.playerInput
-    );
+    //console.log("this is number of attempts", numberOfAttempts);
+    // console.log(
+    //   "this is in the click function - begin ",
+    //   guessInput.playerInput
+    // );
 
     if (
       numberOfAttempts === MAX_ALLOWED_GUESSES &&
       guessInput.valueMatch !== GUESS_SIZE
     ) {
-      alert("Ooppsss, You did it again!");
+      alert("Your Loss, Loser!");
     } else if (
       guessInput.valueMatch === GUESS_SIZE &&
       guessInput.indexMatch === GUESS_SIZE
     ) {
-      alert("Yeay you did it! You are rocking it!");
+      alert("Mars, Here I Come!");
     }
 
     let newHistory = [...history, guessInput];
@@ -155,6 +155,8 @@ const Container = styled.div`
   align-items: center;
   height: 200vh;
   background: linear-gradient(to right, #00bfff, #b2ffff);
+  background-image: url("https://media.giphy.com/media/3ohk2q1zyGMD6xaQPm/giphy.gif");
+  background-size: cover;
 `;
 
 const BoardContainer = styled.div`

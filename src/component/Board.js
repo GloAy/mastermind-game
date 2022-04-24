@@ -17,9 +17,15 @@ const Board = ({
   const BoardContainer = styled.div``;
 
   const Title = styled.h1`
+    color: #turquise;
+    font-size: 2rem;
+    margin: 6rem 0 0.6rem 1rem;
+  `;
+
+  const AttemptText = styled.h2`
     color: #a53b11;
     font-size: 1.3rem;
-    margin: 6rem 0 0.6rem 1rem;
+    margin: 2rem 0 0.6rem 1rem;
   `;
 
   const ScoreContainer = styled.div`
@@ -36,24 +42,24 @@ const Board = ({
     border: none;
     width: 15rem;
     padding: 1.5rem 8rem;
-    margin: 1rem 0 0 3rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(14px);
+    margin: 3rem 0 0 3rem;
+    backdrop-filter: blur(0px);
     font-size: 0.9rem;
-    color: #bd063d;
   `;
 
   return (
     <BoardContainer>
       <Title>Spaceship</Title>
-      <div className="attempt-text">
+      <AttemptText>
         <p>
           {" "}
-          You have {MAX_ALLOWED_GUESSES - attempt} attempts left. Choose
-          Carefully!
+          You have{" "}
+          <span className="text-attempt">
+            {MAX_ALLOWED_GUESSES - attempt}
+          </span>{" "}
+          attempts left. Choose Carefully!
         </p>
-      </div>
+      </AttemptText>
       <Row history={history} playerInput={playerInput} />
       <div>
         {history.map((obj, i) => {
