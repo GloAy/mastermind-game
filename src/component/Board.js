@@ -2,6 +2,7 @@ import React from "react";
 import Buttons from "./Buttons";
 import colors from "./Colors";
 import styled from "styled-components";
+import Row from "./Row";
 
 //you have the color picker
 //different components
@@ -21,7 +22,14 @@ const Board = ({
     margin: 6rem 0 0.6rem 1rem;
   `;
 
-  const GamePlayContainer = styled.h1``;
+  const ScoreContainer = styled.div`
+    background: rgba(255, 252, 252, 0.475);
+    backdrop-filter: blur(24px);
+    display: absolute;
+    -webkit-backdrop-filter: blur(14px);
+    font-size: 1.5rem;
+    border-radius: 3rem;
+  `;
 
   const ColorPickerContainer = styled.div`
     border-radius: 2rem;
@@ -34,16 +42,7 @@ const Board = ({
     -webkit-backdrop-filter: blur(14px);
     font-size: 0.9rem;
     color: #bd063d;
-    &::placeholder {
-      color: #bd063d;
-    }
-    &:focus {
-      outline: none;
-      border: none;
-    }
   `;
-
-  console.log("bu", MAX_ALLOWED_GUESSES);
 
   return (
     <BoardContainer>
@@ -55,38 +54,29 @@ const Board = ({
           Carefully!
         </p>
       </div>
-      <GamePlayContainer>
-        <div className="guessed-stars">
-          {/*  */}
-          {history.map((obj, i) => {
-            return (
-              <p key={i}>
-                {obj.playerInput.map((num, idx) => {
-                  return <span key={idx}>{colors[num]}</span>;
-                })}
-                <span className="scores" style={{ color: "black" }}>
-                  {obj.valueMatch}
-                </span>
-                <span className="scores" style={{ color: "white" }}>
-                  {obj.indexMatch}
-                </span>
-              </p>
-            );
-          })}
+      <Row history={history} playerInput={playerInput} />
+      <div>
+        {history.map((obj, i) => {
+          return (
+            <p key={i}>
+              {obj.playerInput.map((num, idx) => {
+                return <span key={idx}>{colors[num]}</span>;
+              })}
+              <span className="scores" style={{ color: "black" }}>
+                {obj.valueMatch}
+              </span>
+              <span className="scores" style={{ color: "white" }}>
+                {obj.indexMatch}
+              </span>
+            </p>
+          );
+        })}
+      </div>
+      <ColorPickerContainer>
+        <div className="menu">
+          <Buttons handleColorClick={handleColorClick} />
         </div>
-        <div className="color-stars">
-          <p>
-            {playerInput.map((num, i) => {
-              return <span key={i}>{colors[num]}</span>;
-            })}
-          </p>
-        </div>
-        <ColorPickerContainer>
-          <div className="menu">
-            <Buttons handleColorClick={handleColorClick} />
-          </div>
-        </ColorPickerContainer>
-      </GamePlayContainer>
+      </ColorPickerContainer>
     </BoardContainer>
   );
 };
