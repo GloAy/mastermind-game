@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Board from "./component/Board";
 import { Button } from "react-bootstrap";
+import styled from "styled-components";
+import Sidebar from "./component/Sidebar";
+// import Play from "./component/Play";
 
 export const MAX_ALLOWED_GUESSES = 10;
 export const GUESS_SIZE = 4;
@@ -92,33 +95,76 @@ function App() {
     if (guessInput.playerInput.length === GUESS_SIZE) {
       setHistory(newHistory);
       setAttempt(numberOfAttempts);
+      handleClearClick();
     }
     //console.log("new history", newHistory);
   };
 
+  const handleStartNewGame = () => {
+    let newGameState = {
+      guessInputs: {
+        playerInput: [],
+        indexMatch: 0,
+        valueMatch: 0,
+      },
+      history: [],
+      attempts: 0,
+    };
+
+    setGuessInput(newGameState.guessInputs);
+    setHistory(newGameState.history);
+    setAttempt(newGameState.attempts);
+  };
+
+  const handleClearClick = () => {
+    let resetObj = {
+      playerInput: [],
+      indexMatch: 0,
+      valueMatch: 0,
+    };
+
+    // console.log("reset object", resetObj);
+    setGuessInput(resetObj);
+  };
+
   return (
     <div className="App">
-      <Button
-        variant="submit"
-        onClick={() => handleSubmitClick()}
-        style={{
-          background: "#FCC108",
-          width: "90px",
-          heigth: "90px",
-          borderradius: "50%",
-        }}
-      >
-        {" "}
-        Submit
-      </Button>{" "}
-      <Board
-        data={data}
-        playerInput={guessInput.playerInput}
-        history={history}
-        handleColorClick={handleColorClick}
-      />
+      <Container>
+        <BoardContainer>
+          <Sidebar
+            handleSubmitClick={handleSubmitClick}
+            handleClearClick={handleClearClick}
+            handleStartNewGame={handleStartNewGame}
+          />
+          <Board
+            data={data}
+            playerInput={guessInput.playerInput}
+            history={history}
+            handleColorClick={handleColorClick}
+          />
+        </BoardContainer>
+      </Container>
     </div>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #00bfff, #b2ffff);
+`;
+
+const BoardContainer = styled.div`
+  height: 110vh;
+  width: 80vw;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 10px;
+  display: flex;
+`;
 
 export default App;
