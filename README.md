@@ -5,7 +5,7 @@
 
 `npm init` to install all the dependencies
 
-`npm start` to start the project that is running on [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`npm start` to start the project that is running on [http://localhost:3000](http://localhost:3000) to view it in your browser. The site is also deployed on netlify - https://6266f509547fcf1f33c0a0d8--profound-pasca-27257c.netlify.app/
 
 ## Rules
 
