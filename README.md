@@ -1,6 +1,5 @@
 
 
-## View Game - https://6266f509547fcf1f33c0a0d8--profound-pasca-27257c.netlify.app/
 
 ## Clone the Repo: 
 
