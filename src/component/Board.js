@@ -29,8 +29,6 @@ const Board = ({
   `;
 
   const ScoreContainer = styled.div`
-    background: rgba(255, 252, 252, 0.475);
-    backdrop-filter: blur(24px);
     display: absolute;
     -webkit-backdrop-filter: blur(14px);
     font-size: 1.5rem;
@@ -61,7 +59,7 @@ const Board = ({
         </p>
       </AttemptText>
       <Row history={history} playerInput={playerInput} />
-      <div>
+      <ScoreContainer>
         {history.map((obj, i) => {
           return (
             <p key={i}>
@@ -77,7 +75,7 @@ const Board = ({
             </p>
           );
         })}
-      </div>
+      </ScoreContainer>
       <ColorPickerContainer>
         <div className="menu">
           <Buttons handleColorClick={handleColorClick} />
