@@ -1,8 +1,6 @@
 
 
-## Available Scripts
-
-Git clone the repo:
+## Clone the Repo: 
 
 `npm init` to install all the dependencies
 
