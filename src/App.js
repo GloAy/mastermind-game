@@ -3,8 +3,6 @@ import axios from "axios";
 import Board from "./component/Board";
 import styled from "styled-components";
 import Sidebar from "./component/Sidebar";
-import Rules from "./component/Rules";
-// import Play from "./component/Play";
 
 export const MAX_ALLOWED_GUESSES = 10;
 export const GUESS_SIZE = 4;
@@ -18,7 +16,6 @@ function App() {
   });
   const [history, setHistory] = useState([]);
   const [attempt, setAttempt] = useState(0);
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,13 +63,6 @@ function App() {
     let numberOfAttempts = attempt;
     numberOfAttempts++;
 
-    //if the player attemps 10 times and the value is not equal to 4
-    //console.log("this is number of attempts", numberOfAttempts);
-    // console.log(
-    //   "this is in the click function - begin ",
-    //   guessInput.playerInput
-    // );
-
     if (
       numberOfAttempts === MAX_ALLOWED_GUESSES &&
       guessInput.valueMatch !== GUESS_SIZE
@@ -94,7 +84,6 @@ function App() {
       setAttempt(numberOfAttempts);
       handleClearClick();
     }
-    //console.log("new history", newHistory);
   };
 
   const handleStartNewGame = () => {
@@ -120,7 +109,6 @@ function App() {
       valueMatch: 0,
     };
 
-    // console.log("reset object", resetObj);
     setGuessInput(resetObj);
   };
 
@@ -142,7 +130,6 @@ function App() {
             MAX_ALLOWED_GUESSES={MAX_ALLOWED_GUESSES}
           />
         </BoardContainer>
-        <Rules openModal={openModal} setOpenModal={setOpenModal} />
       </Container>
     </div>
   );

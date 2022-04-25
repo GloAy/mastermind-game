@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import spaceship from "../assets/spaceship.png";
 import SideButtons from "./SideButtons";
-import Rules from "./Rules";
 
 const SidebarContainer = styled.div`
   width: 30%;
@@ -19,7 +17,6 @@ const RocketIcon = styled.img`
   border-radius: 5rem;
 `;
 
-// profile container(image and the name of the person)
 const NavContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -44,7 +41,6 @@ const Sidebar = ({
           handleSubmitClick={handleSubmitClick}
           handleClearClick={handleClearClick}
           handleStartNewGame={handleStartNewGame}
-          rules={Rules}
         />
       </NavContainer>{" "}
     </SidebarContainer>

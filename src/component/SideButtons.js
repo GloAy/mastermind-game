@@ -20,17 +20,10 @@ const Submit = styled.div`
   padding: 1rem 0 1rem 0;
 `;
 
-// const Rules = styled.div`
-//   padding: 1rem 0 1rem 0;
-// `;
-
 const SideButtons = ({
   handleStartNewGame,
   handleSubmitClick,
   handleClearClick,
-  openModal,
-  setOpenModal,
-  Rules,
 }) => {
   return (
     <LinkContainer>
@@ -77,17 +70,6 @@ const SideButtons = ({
           Submit
         </button>{" "}
       </Submit>
-      <div>
-        <button
-          className="openModalBtn"
-          variant="rules"
-          onClick={() => setOpenModal(true)}
-          style={{ background: "#DD3545" }}
-        >
-          Rules
-        </button>{" "}
-        {openModal && <Rules closeModal={setOpenModal} />}
-      </div>
     </LinkContainer>
   );
 };
